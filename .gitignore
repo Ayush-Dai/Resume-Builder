@@ -1,0 +1,53 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+backend/**/logs/
+
+# Dependency directories
+backend/**/node_modules/
+frontend/node_modules/
+
+# Build output
+frontend/dist/
+backend/**/dist/
+
+# Environment variables
+.env
+.env.*
+backend/**/.env
+frontend/.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# Misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage
+coverage/
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Optional: ignore database dumps
+*.sqlite
+*.db
+*.bak
+*.sql
+
+# Optional: ignore test output
+/test-output/
+
+# Optional: ignore local uploads
+uploads/

@@ -1,0 +1,115 @@
+Resume Builder Website Knowledge Base
+====================================
+
+Overview:
+---------
+This is a dynamic, user-friendly resume builder web application. It allows users to input their personal, professional, and educational information, and instantly preview their resume in multiple visually distinct templates. Users can export their resume as a PDF, ensuring it is print-ready and formatted for A4 paper.
+
+Key Features:
+-------------
+1. **Dynamic Resume Form**: Users fill out a form with fields for personal info, job title, contact details, summary, skills, work experience, education, and professional links (GitHub, LinkedIn, Portfolio).
+2. **Live Preview**: As users fill out the form, the resume preview updates in real time, reflecting all changes.
+3. **Multiple Templates**: Users can choose from several unique, professionally designed templates (Modern, Classic, Professional, Gradient, Blue, etc.), each with robust default data and conditional rendering for missing fields.
+4. **PDF Export**: Resumes can be exported as PDF, with all templates sized for A4 paper and print-ready.
+5. **Robust Data Handling**: If any section (like experience or education) is empty, default example data is shown. Only sections with data are rendered.
+6. **Professional Links**: GitHub, LinkedIn, and Portfolio links are supported and displayed in the header or footer, depending on the template.
+7. **User-Friendly UI**: The form uses clear labels, icons, and helpful placeholders. Users can add or remove multiple experiences and education entries.
+
+Data Structure:
+---------------
+All templates use a single data structure:
+
+ResumeFormData {
+  fullName: string
+  jobTitle: string
+  email: string
+  phone: string
+  address: string
+  summary: string
+  experience: Experience[]
+  education: Education[]
+  skills: string
+  github?: string
+  linkedin?: string
+  portfolio?: string
+}
+
+Experience {
+  jobTitle: string
+  company: string
+  startDate: string
+  endDate: string
+  description: string
+}
+
+Education {
+  degree: string
+  school: string
+  years: string
+}
+
+How to Use:
+-----------
+1. Fill out the form with your details. Add as many experience and education entries as needed.
+2. Choose a template to preview your resume.
+3. Download your resume as a PDF when ready.
+
+Template Logic:
+---------------
+- Templates only display sections/fields if data is present.
+- If a section is empty, robust default data is shown for preview.
+- Professional links are shown in the header or footer, styled with icons.
+- All templates are visually distinct and print-optimized.
+- Live Preview Template is just for showing and it is gonna adjusted in pdf
+
+Advanced Features:
+------------------
+- **Section Conditional Rendering**: Each resume section (Summary, Experience, Skills, Education, Links) is only displayed if the user has provided data for it. This keeps resumes clean and relevant.
+- **Default Example Data**: When a section is empty, default example data is shown for preview purposes, helping users visualize the final output.
+- **A4 Print Optimization**: All templates are designed to fit perfectly on A4 paper for both digital PDF export and physical printing.
+- **Accessibility**: The UI uses clear labels, icons, and color contrast for better accessibility.
+- **Responsive Design**: The form and preview are responsive, working well on both desktop and mobile devices.
+- **Add/Remove Entries**: Users can dynamically add or remove multiple work experience and education entries.
+- **Live Data Sync**: The form uses real-time data binding, so any change is instantly reflected in the preview.
+- **Icon Integration**: Professional links (GitHub, LinkedIn, Portfolio) are displayed with recognizable icons for clarity.
+- **Customizable Templates**: Developers can easily add new templates by following the `ResumeFormData` structure and conditional rendering logic.
+
+Security & Privacy:
+-------------------
+- All data entered by users is handled locally in the browser and is not sent to any server by default.
+- Users should ensure they do not share sensitive information when exporting or sharing their resume.
+
+Common User Questions (for Chatbot):
+------------------------------------
+Q: How do I add more work experience or education entries?
+A: Use the "Add Work Experience" or "Add Education" buttons in the form. You can add as many as you need.
+
+Q: Can I remove a section I don't want?
+A: Yes! If you leave a section (like Skills or Education) empty, it will not appear in the final resume.
+
+Q: How do I download my resume as a PDF?
+A: After filling out the form and choosing a template, use the "Download as PDF" button to export your resume.
+
+Q: Why are my links not showing?
+A: Make sure you have entered your GitHub, LinkedIn, or Portfolio URLs in the form. Only filled links will appear in the resume.
+
+Q: Can I use this on my phone?
+A: Yes, the website is responsive and works on mobile devices.
+
+Q: Is my data saved?
+A: Data is stored in your browser session. If you refresh or close the page, your data may be lost unless you implement additional storage features.
+
+Q: Can I customize the templates?
+A: Developers can add or modify templates in the codebase. All templates use the same data structure for easy customization.
+
+About Us:
+---------
+Resume Builder is developed by a passionate team of web developers and designers dedicated to making professional resume creation accessible, fast, and visually appealing for everyone. Our mission is to empower job seekers, students, and professionals with easy-to-use tools that help them stand out in the job market.
+
+We believe in:
+- Simplicity: Making resume creation intuitive and hassle-free.
+- Flexibility: Offering multiple templates and customization options.
+- Privacy: Ensuring your data stays on your device and is never shared without your consent.
+- Continuous Improvement: We welcome feedback and are always working to add new features and templates.
+
+For suggestions, feedback, or support, please contact us through the website or refer to the documentation.
