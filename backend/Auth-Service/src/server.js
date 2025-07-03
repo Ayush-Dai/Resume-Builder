@@ -9,7 +9,7 @@ const routes = require('./routes/identity-routes');
 const errorHandler = require('./middleware/errorHandler');
 const logger = require('./utils/logger');
 const cookieParser = require('cookie-parser');
-const { rateLimiterMiddleware, sensitiveEndPointsLimiter } = require('./utils/rate-limiter');
+
 
 
 //middleware
@@ -17,7 +17,6 @@ app.use(helmet());
 app.use(configureCors());
 app.use(express.json());
 app.use(cookieParser());
-// app.use(rateLimiterMiddleware);
 app.use(errorHandler);
 
 
