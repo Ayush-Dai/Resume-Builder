@@ -1,7 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
-const { rateLimitOpt } = require('./utils/rate-limiter');
 const helmet = require('helmet');
 const logger = require('./utils/logger');
 const errorHandler = require('./middleware/errorHandler');
@@ -16,7 +14,7 @@ app.use(helmet());
 app.use(configureCors());
 app.use(express.json());
 app.use(errorHandler);
-// app.use(rateLimitOpt);
+
 
 app.use((req, res, next) => {
     logger.info(`Received ${req.method} request to ${req.url}`);

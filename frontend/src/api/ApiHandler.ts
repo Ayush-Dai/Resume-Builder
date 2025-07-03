@@ -5,6 +5,29 @@ const api = axios.create({
     withCredentials: true,
 });
 
+// Axios interceptor for refresh token logic
+api.interceptors.response.use(
+    response => response,
+    async error => {
+        const originalRequest = error.config;
+        if (
+            error.response &&
+            error.response.status === 401 &&
+            !originalRequest._retry
+        ) {
+            originalRequest._retry = true;
+            try {               
+                await api.post('/v1/auth/refresh');
+                return api(originalRequest);
+            } catch (refreshError) {
+                // window.location.href = '/builder';
+                return Promise.reject(refreshError);
+            }
+        }
+        return Promise.reject(error);
+    }
+);
+
 const signUpApi = (userData: object) => api.post('/v1/auth/register', userData);
 const signInApi = (userData: object) => api.post('/v1/auth/login', userData);
 const googleSignInApi = (access_token: string) => api.post(`/v1/auth/google-login`, { access_token });

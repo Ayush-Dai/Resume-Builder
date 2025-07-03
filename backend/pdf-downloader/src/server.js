@@ -1,10 +1,13 @@
+require('dotenv').config();
 const express = require('express');
 const puppeteer = require('puppeteer');
 const bodyParser = require('body-parser');
 const { configureCors } = require('./config/corsConfig');
+const helmet = require('helmet');
 
 const app = express();
 app.use(configureCors());
+app.use(helmet());
 app.use(bodyParser.json({ limit: '5mb' }));
 
 app.post('/api/resume/generate-pdf', async (req, res) => {
@@ -35,4 +38,6 @@ app.post('/api/resume/generate-pdf', async (req, res) => {
   res.send(pdfBuffer);
 });
 
-app.listen(3002, () => console.log('Server running at http://localhost:3002'));
+const PORT=process.env.PORT;
+
+app.listen(PORT, () => console.log(`Server running at ${PORT}`));

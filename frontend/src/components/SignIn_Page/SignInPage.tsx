@@ -29,8 +29,8 @@ const SignInPage = () => {
                 const response = await signInApi(values);
                 console.log(response.data);
                 if (response.status === 200 && response.data.user) {
-                    const { _id, email, firstName, image } = response.data.user;
-                    const obj = { _id, email, firstName, image };
+                    const { _id, email, name, image } = response.data.user;
+                    const obj = { _id, email, name, image };
                     console.log(obj);
                     localStorage.setItem('user', JSON.stringify(obj));
                     action.resetForm();
@@ -43,7 +43,7 @@ const SignInPage = () => {
                     position: 'topRight',
                     timeout: 2000,
                 });
-                navigate('/home');
+                navigate('/');
             } catch (error: any) {
                 iziToast.error({
                     title: 'Error',

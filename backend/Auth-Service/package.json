@@ -16,8 +16,6 @@
     "nodemon": "^3.1.10"
   },
   "dependencies": {
-    "amqplib": "^0.10.8",
-    "arctic": "^3.7.0",
     "argon2": "^0.43.0",
     "axios": "^1.9.0",
     "cookie-parser": "^1.4.7",
@@ -25,7 +23,6 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "express-rate-limit": "^7.5.0",
-    "google-auth-library": "^10.0.0-rc.3",
     "googleapis": "^150.0.1",
     "helmet": "^8.1.0",
     "ioredis": "^5.6.1",

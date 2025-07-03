@@ -8,7 +8,7 @@ const generateTokens = async (user) => {
         firstName: user.firstName,
         lastName: user.lastName,
         userRole: user.role
-    }, process.env.JWT_SECRET, { expiresIn: '120m' });
+    }, process.env.JWT_SECRET, { expiresIn: '15m' });
 
     const refreshToken = crypto.randomBytes(40).toString('hex');
     const expiresAt = new Date();

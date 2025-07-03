@@ -39,8 +39,13 @@ useEffect(() => {
     const data = localStorage.getItem('user');
     if (data) {
       try {
-        const parsedUser: User = JSON.parse(data);
-        setUserInfo(parsedUser);
+        const parsedUser = JSON.parse(data);
+        // Support both firstName and name (for Google users)
+        const userWithFirstName = {
+          ...parsedUser,
+          firstName: parsedUser.firstName || parsedUser.name || '',
+        };
+        setUserInfo(userWithFirstName);
       } catch (error) {
         console.error("Failed to parse user from localStorage", error);
       }
@@ -63,8 +68,8 @@ useEffect(() => {
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none cursor-pointer">
         <Avatar
-          src={user?.image}
-          firstName={user?.firstName}
+          // src={user?.image}
+          name={user?.firstName}
           size="md"
         />
       </DropdownMenuTrigger>

@@ -20,7 +20,6 @@ async function invalidateCache(req) {
 }
 
 
-
 //User registration
 const registerUser = async (req, res) => {
     try {
@@ -51,7 +50,7 @@ const registerUser = async (req, res) => {
         await user.save();
 
         //invalidate cache after user registration
-        await invalidateCache(req);      
+        await invalidateCache(req);
 
 
         logger.info(`User registered successfully. ID: ${user._id}`);
@@ -110,7 +109,7 @@ const loginUser = async (req, res) => {
 
         const cookieOptions = {
             httpOnly: true,
-            maxAge: 3 * 24 * 60 * 60 * 1000,
+            maxAge: 15 * 60 * 1000,
             path: '/',
             priority: 'high'
         };
@@ -126,18 +125,17 @@ const loginUser = async (req, res) => {
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
-            path: '/'
+            path: '/',
         });
-
-
         return res.status(200).json({
             success: true,
             message: "user loged in successfully",
-            user
+            user:{
+                _id: user._id,
+                email: user.email,
+                name: user.firstName + ' ' + user.lastName,               
+            }
         });
-
-
-
 
     } catch (error) {
         logger.error(`Login failed: ${error.message}`);
@@ -182,7 +180,8 @@ const googleLoginController = async (req, res) => {
 
         const cookieOptions = {
             httpOnly: true,
-            maxAge: 3 * 24 * 60 * 60 * 1000,
+            // maxAge: 3 * 24 * 60 * 60 * 1000,
+            maxAge: 15 * 60 * 1000,
             path: '/',
             priority: 'high'
         };
@@ -206,7 +205,7 @@ const googleLoginController = async (req, res) => {
             user: {
                 _id: user._id,
                 email: user.email,
-                name: user.firstName + " " + user.lastName,
+                name: user.firstName + ' ' + user.lastName,
                 image: user.image
             }
         });
@@ -264,7 +263,8 @@ const refreshTokenController = async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',
-            maxAge: 60 * 60 * 1000, // 1 hour
+            maxAge: 15 * 60 * 1000,
+
             path: '/'
         });
 
@@ -274,9 +274,9 @@ const refreshTokenController = async (req, res) => {
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',
             maxAge: 7 * 24 * 60 * 60 * 1000,
-            path: '/auth/refresh'
+            path: '/'
         });
-
+        logger.info(`Refresh token generated successfully for user ID: ${user._id}`);
         // Also return new access token
         return res.status(200).json({
             success: true,
