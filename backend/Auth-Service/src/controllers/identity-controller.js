@@ -180,7 +180,6 @@ const googleLoginController = async (req, res) => {
 
         const cookieOptions = {
             httpOnly: true,
-            // maxAge: 3 * 24 * 60 * 60 * 1000,
             maxAge: 15 * 60 * 1000,
             path: '/',
             priority: 'high'

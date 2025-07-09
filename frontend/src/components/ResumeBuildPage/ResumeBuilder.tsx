@@ -5,9 +5,9 @@ import ImageTemplate from '../templatesPage/templates/ImageTemplate'
 import ExecutiveTemplate from '../templatesPage/templates/ExecutiveTemplate '
 import ProfessionalTemplate from '../templatesPage/templates/ProfessionalTemplate'
 import ClassicTemplate from '../templatesPage/templates/ClassicTemplate'
+import ProResumeTemplate from '../templatesPage/templates/try'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {generatePdfApi} from "../../api/ApiHandler";
-import ProResumeTemplate from '../templatesPage/templates/try'
 import { Loader2 } from 'lucide-react'
 
 

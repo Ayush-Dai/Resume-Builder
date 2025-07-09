@@ -1,5 +1,3 @@
-"use client"
-
 import type React from "react"
 import { Users, Shield, Zap, CheckCircle, ArrowRight } from "lucide-react"
 

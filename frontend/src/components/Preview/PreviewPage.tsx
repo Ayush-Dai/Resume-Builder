@@ -13,8 +13,7 @@ const Preview = () => {
   // Prefer template from injected data, then query param, then default
   const query = new URLSearchParams(window.location.search);
   const template = (injectedData && injectedData.template) ||
-    query.get("template") ||
-    "modern" || "professional || classic || image || executive || pro ";
+    query.get("template") ||  "modern" ;
 
   return (
     <div>

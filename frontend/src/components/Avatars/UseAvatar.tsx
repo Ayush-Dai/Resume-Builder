@@ -40,10 +40,9 @@ useEffect(() => {
     if (data) {
       try {
         const parsedUser = JSON.parse(data);
-        // Support both firstName and name (for Google users)
         const userWithFirstName = {
           ...parsedUser,
-          firstName: parsedUser.firstName || parsedUser.name || '',
+          firstName: parsedUser.name || '',
         };
         setUserInfo(userWithFirstName);
       } catch (error) {

@@ -25,8 +25,7 @@ const PrivateRoute = ({ element: Element, requiredRole }: PrivateRouteProps) => 
           response.data.success === true &&
           response.data.user &&
           typeof response.data.user._id === "string"
-        ) {
-          // Support array or string for requiredRole
+        ) {      
          if (
     requiredRole &&
     !requiredRole.includes(response.data.user.role)

@@ -1,14 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const puppeteer = require('puppeteer');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const { configureCors } = require('./config/corsConfig');
 const helmet = require('helmet');
 
 const app = express();
 app.use(configureCors());
 app.use(helmet());
-app.use(bodyParser.json({ limit: '5mb' }));
+// app.use(bodyParser.json({ limit: '5mb' }));
+app.use(express.json({ limit: '5mb' }));
 
 app.post('/api/resume/generate-pdf', async (req, res) => {
   const { formData, template } = req.body;
@@ -35,7 +36,7 @@ app.post('/api/resume/generate-pdf', async (req, res) => {
     'Content-Type': 'application/pdf',
     'Content-Disposition': 'attachment; filename=resume.pdf',
   });
-  res.send(pdfBuffer);
+    res.send(pdfBuffer);
 });
 
 const PORT=process.env.PORT;

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getUserApi, deleteUserApi } from "../../api/ApiHandler";
 
-// Define a User type for type safety
 interface User {
+  lastName: string;
   _id: string;
   firstName?: string;
   name?: string;
@@ -21,7 +21,6 @@ function Admin() {
       try {
         setLoading(true);
         setError("");
-        // Adjust the API endpoint as needed
         const res = await getUserApi();
         setUsers(res.data.users || []);
       }finally {
@@ -86,7 +85,7 @@ function Admin() {
                     >
                       <td className="py-2 px-4 border-b">{idx + 1}</td>
                       <td className="py-2 px-4 border-b font-medium">
-                        {user.firstName || user.name || "-"}
+                        {user.firstName }  {user.lastName}
                       </td>
                       <td className="py-2 px-4 border-b">{user.email}</td>
                       <td className="py-2 px-4 border-b capitalize">

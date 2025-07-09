@@ -7,7 +7,6 @@ type AvatarProps = {
 };
 
 const Avatar: React.FC<AvatarProps> = ({   name = '', size = 'md' }) => {
-  // Prefer firstName, fallback to name, then '?'
   const displayName =  name || '';
   const firstLetter = displayName.length > 0 ? displayName.charAt(0).toUpperCase() : '?';
 

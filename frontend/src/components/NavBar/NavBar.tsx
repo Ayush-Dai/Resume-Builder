@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Menu, FileText, Palette, Info, LogIn, UserPlus } from "lucide-react";
+import {  FileText, Palette, Info, LogIn, UserPlus } from "lucide-react";
 import { NavLink, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-// import { authCheckApi } from "../../api/ApiHandler";
 import UseAvatar from "../Avatars/UseAvatar";
 
 interface NavLink {
